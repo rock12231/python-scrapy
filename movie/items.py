@@ -15,3 +15,4 @@ class MovieItem(scrapy.Item):
     # def parse(self, response):
     #     title = response.css('title::text').extract()
     #     yield {'titletext': title}
+    pass
