@@ -1,3 +1,4 @@
+from ast import Try
 import json
 from pkg_resources import yield_lines
 import scrapy
@@ -7,7 +8,6 @@ class QuotesSpider(scrapy.Spider):
     start_urls = ['https://www.justwatch.com/ag/movie/k-g-f-chapter-1']
 
     def parse(self, response):
-        # title = response.css('div.detail-infos__value::text').extract()
         Genre = response.css('div.detail-infos__value span::text').getall()
         Director_Name = response.css('div.detail-infos__value span a::text').get()
         Cast = response.css('div.hidden-horizontal-scrollbar__items .title-credits__actor a::text').extract()
@@ -17,7 +17,8 @@ class QuotesSpider(scrapy.Spider):
         IMDb_Ratings = response.css('div.jw-scoring-listing__rating a::text').extract()
         Movie_name = response.css('div.title-block div h1::text').get()
         Movie_Link = response.request.url
-        Genre.remove(", ")
+        val = ", "
+        Genre = [i for i in Genre if i != val]
         Release_year = Release_year.replace("(","")
         Release_year = Release_year.replace(")","")
         movie_json = {	
