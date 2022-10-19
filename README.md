@@ -1,12 +1,13 @@
 # python-scrapy
 web scraping using python scarapy spider 
 
-###Run
+### Run
 ```javascript
 scrapy crawl main
 ```
 
-###Output
+### Output
+data.json file 
 ```javascript
 
 {
